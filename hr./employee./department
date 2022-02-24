@@ -1,0 +1,77 @@
+const { test, expect } = require('@playwright/test') ;
+  test('basic test', async ({ page }) => {
+    test.setTimeout(12000000);
+    await page.goto('http://172.27.22.216:8001/login');
+    // Go to http://172.27.22.216:8001/login#login
+    await page.goto('http://172.27.22.216:8001/login#login');
+    // Click text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+    await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').click();
+    // Fill text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+    await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').fill('Administrator');
+    // Press Tab
+    await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').press('Tab');
+    // Fill [placeholder="•••••"]
+    await page.locator('[placeholder="•••••"]').fill('admin');
+    // Press Enter
+    await Promise.all([
+      page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/app' }*/),
+      page.locator('[placeholder="•••••"]').press('Enter')
+    ]);
+    
+    await page.locator('text=HR').click();
+    await expect(page).toHaveURL('http://172.27.22.216:8001/app/hr');
+    // Click text=Department
+    await page.locator('text=Department').click();
+    await expect(page).toHaveURL('http://172.27.22.216:8001/app/department/view/tree');
+    // Click button:has-text("New")
+    await page.locator('button:has-text("New")').click();
+    // Click text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').click();
+    // Press CapsLock
+    
+    // Fill text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').fill('Sales');
+    // Click text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').click();
+    
+    // Fill text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').fill('IIT');
+    // Click p:has-text("IIT K")
+    await page.locator('p:has-text("IIT K")').click();
+    // Click text=Create New
+    await page.locator('text=Create New').click();
+    // Click [id="page-Tree\/Department"] button:has-text("New")
+    await page.locator('[id="page-Tree\\/Department"] button:has-text("New")').click();
+    // Click text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').click();
+    // Fill text=Department null >> input[type="text"]
+   
+    // Fill text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').fill('Marketing');
+    // Click text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').click();
+    // Click text=Company Begin typing for results. >> input[role="combobox"]
+    
+    // Fill text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').fill('i');
+    // Click #awesomplete_list_7 li:has-text("IIT K")
+    await page.locator('#awesomplete_list_7 li:has-text("IIT K")').click();
+    // Click text=Create New >> nth=1
+    await page.locator('text=Create New').nth(1).click();
+    // Click [id="page-Tree\/Department"] button:has-text("New")
+    await page.locator('[id="page-Tree\\/Department"] button:has-text("New")').click();
+    // Click text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').click();
+    // Press CapsLock
+    
+    // Fill text=Department null >> input[type="text"]
+    await page.locator('text=Department null >> input[type="text"]').fill('Quality testing');
+    // Click text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').click();
+    // Fill text=Company Begin typing for results. >> input[role="combobox"]
+    await page.locator('text=Company Begin typing for results. >> input[role="combobox"]').fill('i');
+    // Click #awesomplete_list_8 p:has-text("IIT K")
+    await page.locator('#awesomplete_list_8 p:has-text("IIT K")').click();
+    // Click text=Create New >> nth=2
+    await page.locator('text=Create New').nth(2).click();
+  });
