@@ -1,0 +1,80 @@
+import { test, expect, devices } from '@playwright/test';
+test.use({
+  ...devices['Pixel 2'],
+});
+test('test', async ({ page }) => {
+  test.setTimeout(12000000);
+  // Go to http://172.27.22.216:8001/login
+  await page.goto('http://172.27.22.216:8001/login');
+  // Click text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+  await Promise.all([
+    page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/login#login' }*/),
+    page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').click()
+  ]);
+  // Fill text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+  await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').fill('Administrator');
+  // Press Tab
+  await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').press('Tab');
+  // Fill [placeholder="•••••"]
+  await page.locator('[placeholder="•••••"]').fill('admin');
+  // Press Enter
+  await Promise.all([
+    page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/app' }*/),
+    page.locator('[placeholder="•••••"]').press('Enter')
+  ]);
+  // Click text=Home Create Workspace Edit Actions >> svg >> nth=1
+  await page.locator('text=Home Create Workspace Edit Actions >> svg').nth(1).click();
+  // Click text=HR
+  await page.locator('text=HR').click();
+  await expect(page).toHaveURL('http://172.27.22.216:8001/app/hr');
+  // Click text=Employee Group
+  await page.locator('text=Employee Group').click();
+  await expect(page).toHaveURL('http://172.27.22.216:8001/app/employee-group');
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('freshers');
+  // Click button:has-text("Save")
+  await page.locator('button:has-text("Save")').click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('interns');
+  // Click text=Save >> nth=3
+  await page.locator('text=Save').nth(3).click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('junior dev');
+  await page.locator('text=Save').nth(4).click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('senior dev');
+  // Click button:has-text("Save") >> nth=3
+  await page.locator('button:has-text("Save")').nth(3).click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('managers');
+  // Click button:has-text("Save") >> nth=4
+  await page.locator('button:has-text("Save")').nth(4).click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('regional manager');
+  // Click text=New Employee Group Name regional manager Edit in full page Save >> button >> nth=4
+  await page.locator('text=New Employee Group Name regional manager Edit in full page Save >> button').nth(4).click();
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('ceo');
+  await page.locator('text=New Employee Group Name ceo Edit in full page Save >> button').nth(4).click();
+
+  // Click button:has-text("Add Employee Group")
+  await page.locator('button:has-text("Add Employee Group")').click();
+  // Fill text=Name undefined >> input[type="text"]
+  await page.locator('text=Name undefined >> input[type="text"]').fill('vice chairman');
+  // Click text=New Employee Group Name vice chairman Edit in full page Save >> button >> nth=4
+  await page.locator('text=New Employee Group Name vice chairman Edit in full page Save >> button').nth(4).click();
+});
