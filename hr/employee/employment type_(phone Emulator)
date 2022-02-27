@@ -1,0 +1,82 @@
+import { _android as android, } from 'playwright';
+import { test, expect, devices, _android } from '@playwright/test';
+test.use({
+  ...devices['Pixel 2'],
+});
+test('test', async ({ page }) => {
+    test.setTimeout(12000000);
+  // Go to http://172.27.22.216:8001/login
+  await page.goto('http://172.27.22.216:8001/login');
+  // Go to http://172.27.22.216:8001/login#login
+  await page.goto('http://172.27.22.216:8001/login#login');
+  // Click text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+  await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').click();
+  // Fill text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
+  await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').fill('Administrator');
+  // Press Tab
+  await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').press('Tab');
+  // Fill [placeholder="•••••"]
+  await page.locator('[placeholder="•••••"]').fill('admin');
+  // Press Enter
+  await Promise.all([
+    page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/app' }*/),
+    page.locator('[placeholder="•••••"]').press('Enter')
+  ]);
+  // Click text=Home Create Workspace Edit Actions >> svg >> nth=1
+  // await page.locator('text=Home Create Workspace Edit Actions >> svg').hover();
+  await page.locator('text=Home Create Workspace Edit Actions >> svg').nth(1).click();
+  // Click text=HR
+  await page.locator('text=HR').click();
+  await expect(page).toHaveURL('http://172.27.22.216:8001/app/hr');
+  // Click text=Employment Type
+  await page.locator('text=Employment Type').click();
+  await expect(page).toHaveURL('http://172.27.22.216:8001/app/employment-type');
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('rookie');
+  // Click button:has-text("Save")
+  await page.locator('button:has-text("Save")').click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('Migrant');
+  // Click text=Save >> nth=3
+  await page.locator('text=Save').nth(3).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('nightshifter');
+  // Click text=Save >> nth=4
+  await page.locator('text=Save').nth(4).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('Overseas');
+  // Click button:has-text("Save") >> nth=3
+  await page.locator('button:has-text("Save")').nth(3).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('part-time');
+  // Click button:has-text("Save") >> nth=4
+  await page.locator('button:has-text("Save")').nth(4).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('CEO');
+  // Click text=New Employment Type Employment Type CEO Edit in full page Save >> button >> nth=4
+  await page.locator('text=New Employment Type Employment Type CEO Edit in full page Save >> button').nth(4).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('Gamer');
+  // Click text=New Employment Type Employment Type Gamer Edit in full page Save >> button >> nth=4
+  await page.locator('text=New Employment Type Employment Type Gamer Edit in full page Save >> button').nth(4).click();
+  // Click button:has-text("Add Employment Type")
+  await page.locator('button:has-text("Add Employment Type")').click();
+  // Fill text=Employment Type undefined >> input[type="text"]
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('B-wood');
+  // Click text=New Employment Type Employment Type B-wood Edit in full page Save >> button >> nth=4
+  await page.locator('text=New Employment Type Employment Type B-wood Edit in full page Save >> button').nth(4).click();
+});
