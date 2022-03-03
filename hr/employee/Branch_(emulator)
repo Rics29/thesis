@@ -4,77 +4,43 @@ test.use({
 });
 test('test', async ({ page }) => {
     test.setTimeout(12000000);
-  // Go to http://172.27.22.216:8001/login
   await page.goto('http://172.27.22.216:8001/login');
-  // Go to http://172.27.22.216:8001/login#login
   await page.goto('http://172.27.22.216:8001/login#login');
-  // Click text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').click();
-  // Fill text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').fill('Administrator');
-  // Press Tab
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').press('Tab');
-  // Fill [placeholder="•••••"]
   await page.locator('[placeholder="•••••"]').fill('admin');
-  // Press Enter
   await Promise.all([
     page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/app' }*/),
     page.locator('[placeholder="•••••"]').press('Enter')
   ]);
-  // Click text=Home Create Workspace Edit Actions >> use >> nth=1
   await page.locator('text=Home Create Workspace Edit Actions >> use').nth(1).click();
-  // Click div:nth-child(12) .desk-sidebar-item .item-anchor .sidebar-item-icon .icon use
   await page.locator('div:nth-child(12) .desk-sidebar-item .item-anchor .sidebar-item-icon .icon use').click();
   await expect(page).toHaveURL('http://172.27.22.216:8001/app/hr');
-  // Click text=Branch
   await page.locator('text=Branch').click();
   await expect(page).toHaveURL('http://172.27.22.216:8001/app/branch');
-  // Click button:has-text("Add Branch")
-  await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
+  await page.locator('button:has-text("Add Branch")').click()
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Noida');
-  // Click button:has-text("Save")
   await page.locator('button:has-text("Save")').click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Greater Noida');
-  // Click text=Save >> nth=3
   await page.locator('text=Save').nth(3).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Delhi');
-  // Click text=Save >> nth=4
   await page.locator('text=Save').nth(4).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Gurgaon');
-  // Click button:has-text("Save") >> nth=3
   await page.locator('button:has-text("Save")').nth(3).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('MP');
-  // Click button:has-text("Save") >> nth=4
   await page.locator('button:has-text("Save")').nth(4).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Dankaur');
-  // Click text=New Branch Branch Dankaur Edit in full page Save >> button >> nth=4
   await page.locator('text=New Branch Branch Dankaur Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Dehradun');
-  // Click text=New Branch Branch Dehradun Edit in full page Save >> button >> nth=4
   await page.locator('text=New Branch Branch Dehradun Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Branch")
   await page.locator('button:has-text("Add Branch")').click();
-  // Fill text=Branch undefined >> input[type="text"]
   await page.locator('text=Branch undefined >> input[type="text"]').fill('Kolkata');
-  // Click text=New Branch Branch Kolkata Edit in full page Save >> button >> nth=4
   await page.locator('text=New Branch Branch Kolkata Edit in full page Save >> button').nth(4).click();
 });
