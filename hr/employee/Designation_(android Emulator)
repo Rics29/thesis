@@ -4,125 +4,67 @@ test.use({
 });
 test('test', async ({ page }) => {
     test.setTimeout(12000000);
-  // Go to http://172.27.22.216:8001/login
   await page.goto('http://172.27.22.216:8001/login');
-  // Go to http://172.27.22.216:8001/login#login
   await page.goto('http://172.27.22.216:8001/login#login');
-  // Click text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').click();
-  // Fill text=Email Password Show Forgot Password? >> [placeholder="jane\@example\.com"]
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').fill('Administrator');
-  // Press Tab
   await page.locator('text=Email Password Show Forgot Password? >> [placeholder="jane\\@example\\.com"]').press('Tab');
-  // Fill [placeholder="•••••"]
   await page.locator('[placeholder="•••••"]').fill('admin');
-  // Press Enter
   await Promise.all([
     page.waitForNavigation(/*{ url: 'http://172.27.22.216:8001/app' }*/),
     page.locator('[placeholder="•••••"]').press('Enter')
   ]);
-  // Click text=Home Create Workspace Edit Actions >> svg >> nth=1
   await page.locator('text=Home Create Workspace Edit Actions >> svg').nth(1).click();
-  // Click text=HR
   await page.locator('text=HR').click();
   await expect(page).toHaveURL('http://172.27.22.216:8001/app/hr');
-  // Click text=Designation
   await page.locator('text=Designation').click();
   await expect(page).toHaveURL('http://172.27.22.216:8001/app/designation');
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Data analyst');
-  // Click button:has-text("Save")
   await page.locator('button:has-text("Save")').click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Data auditer');
-  // Click text=Save >> nth=3
   await page.locator('text=Save').nth(3).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Data entrier');
-  // Click text=Save >> nth=4
   await page.locator('text=Save').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Data visualizer');
-  // Click button:has-text("Save") >> nth=3
   await page.locator('button:has-text("Save")').nth(3).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Coach');
-  // Click button:has-text("Save") >> nth=4
   await page.locator('button:has-text("Save")').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Head researcher');
-  // Click text=New Designation Designation Head researcher Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation Head researcher Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Salesman');
-  // Click text=New Designation Designation Salesman Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation Salesman Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('Sales executive');
-  // Click text=New Designation Designation Sales executive Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation Sales executive Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('video editor');
-  // Click text=New Designation Designation video editor Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation video editor Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('graphic designer');
-  // Click text=New Designation Designation graphic designer Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation graphic designer Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('graphikar');
-  // Click text=New Designation Designation graphikar Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation graphikar Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('councelor');
-  // Click text=New Designation Designation councelor Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation councelor Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('HTML');
-  // Click text=New Designation Designation HTML Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation HTML Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('css');
-  // Click text=New Designation Designation css Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation css Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('full stack');
-  // Click text=New Designation Designation full stack Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation full stack Edit in full page Save >> button').nth(4).click();
-  // Click button:has-text("Add Designation")
   await page.locator('button:has-text("Add Designation")').click();
-  // Fill text=Designation undefined >> input[type="text"]
   await page.locator('text=Designation undefined >> input[type="text"]').fill('choreographer');
-  // Click text=New Designation Designation choreographer Edit in full page Save >> button >> nth=4
   await page.locator('text=New Designation Designation choreographer Edit in full page Save >> button').nth(4).click();
 });
