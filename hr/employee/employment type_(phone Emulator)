@@ -42,6 +42,6 @@ test('test', async ({ page }) => {
   await page.locator('text=Employment Type undefined >> input[type="text"]').fill('Gamer');
   await page.locator('text=New Employment Type Employment Type Gamer Edit in full page Save >> button').nth(4).click();
   await page.locator('button:has-text("Add Employment Type")').click();
-  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('B-wood');
-  await page.locator('text=New Employment Type Employment Type B-wood Edit in full page Save >> button').nth(4).click();
+  await page.locator('text=Employment Type undefined >> input[type="text"]').fill('Intern');
+  await page.locator('text=New Employment Type Employment Type Intern Edit in full page Save >> button').nth(4).click();
 });
